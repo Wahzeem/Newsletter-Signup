@@ -50,7 +50,7 @@ app.post("/", function(req, res){
 //options for https request...specifies that its for the post request along with api key
  const options = {
    method: "post",
-   auth: "Willis:615d17ecd56290c5ad0ea4b8cf49b69b-us7" //reminder = cant have spaces
+   auth: "..." //reminder = cant have spaces
  };
 
 //Make the https request a const
@@ -80,8 +80,7 @@ app.listen(serverPort, function(){
 //Mailchimp endpoint
 //https://server.api.mailchimp.com/3.0/lists/{list_id}
 
-//API Key
-//615d17ecd56290c5ad0ea4b8cf49b69b-us7
+
 
 //List ID
 //7376336139
