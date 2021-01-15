@@ -8,7 +8,7 @@ const https = require("https");
 const app = express();
 
 // Port number of server
-const serverPort = 3000;
+const testServerPort = 3000;
 
 // Specifies a static folder (css, img folder)
 app.use(express.static("public"));
@@ -50,11 +50,19 @@ app.post("/", function(req, res){
 //options for https request...specifies that its for the post request along with api key
  const options = {
    method: "post",
-   auth: "..." //reminder = cant have spaces
+   auth: "Willis:a205861569d4fb4f5759b5c1729adfdd5-us7" //reminder = cant have spaces
  };
 
 //Make the https request a const
  const request = https.request(url, options, function(response){ //callback only requires a response
+
+
+   if(response.statusCode === 200){
+     res.sendFile(__dirname + "/success.html");
+   } else {
+     res.sendFile(__dirname + "/failure.html");
+   }
+
    response.on("data", function(data){
      console.log(JSON.parse(data)); //show data in JSON form
    })
@@ -67,10 +75,14 @@ app.post("/", function(req, res){
 
 }); // End of Post request
 
+app.post("/failure", function(req, res){
+  res.redirect("/"); //redirect to home page when button is pressed
+});
+
 //
-app.listen(serverPort, function(){
+app.listen(process.env.PORT || testServerPort, function(){
   //Console message that notifies what port the server is on
-  console.log("Server is running on port " + serverPort + "...");
+  console.log("Server is running on port " + testServerPort + "...");
 })
 
 
@@ -79,8 +91,6 @@ app.listen(serverPort, function(){
 
 //Mailchimp endpoint
 //https://server.api.mailchimp.com/3.0/lists/{list_id}
-
-
 
 //List ID
 //7376336139
