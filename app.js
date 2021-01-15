@@ -48,7 +48,7 @@ app.post("/", function(req, res){
 //Mailchimp url endpoint with list ID
  const url = "https://us7.api.mailchimp.com/3.0/lists/7376336139";
 
- const apiKey = process.env.API_KEY;
+ const apiKey = process.env.API_KEY; //Goes here API KEY
 
 //options for https request...specifies that its for the post request along with api key
  const options = {
