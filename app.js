@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
+require("dotenv").config();
 
 // Creating new instance of express
 const app = express();
@@ -47,10 +48,12 @@ app.post("/", function(req, res){
 //Mailchimp url endpoint with list ID
  const url = "https://us7.api.mailchimp.com/3.0/lists/7376336139";
 
+ const apiKey = process.env.API_KEY;
+
 //options for https request...specifies that its for the post request along with api key
  const options = {
    method: "post",
-   auth: "Willis:a205861569d4fb4f5759b5c1729adfdd5-us7" //reminder = cant have spaces
+   auth: apiKey //reminder = cant have spaces
  };
 
 //Make the https request a const
